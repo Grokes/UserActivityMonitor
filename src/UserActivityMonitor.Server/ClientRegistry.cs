@@ -18,7 +18,7 @@ public class ClientRegistry(TimeProvider timeProvider)
                 heartbeat.MachineName,
                 heartbeat.UserName,
                 remoteIpAddress,
-                heartbeat.LastInputAt.ToUniversalTime(),
+                heartbeat.LastInputAt?.ToUniversalTime(),
                 timeProvider.GetUtcNow(),
                 IsOnline: true);
         }

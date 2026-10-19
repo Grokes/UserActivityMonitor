@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мониторинг активности</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">User Activity Monitor</p>
+        <h1>Клиенты организации</h1>
+        <p class="description">Подключения и последняя активность пользователей</p>
+      </div>
+      <button id="refresh" type="button">Обновить</button>
+    </header>
+
+    <section class="summary" aria-label="Сводка подключений">
+      <div class="metric"><span>Всего клиентов</span><strong id="total-count">—</strong></div>
+      <div class="metric"><span>Online</span><strong id="online-count">—</strong></div>
+      <div class="metric"><span>Offline</span><strong id="offline-count">—</strong></div>
+    </section>
+
+    <section class="client-panel" aria-labelledby="clients-heading">
+      <div class="panel-header">
+        <h2 id="clients-heading">Список клиентов</h2>
+        <p id="last-updated">Обновление каждые 5 секунд</p>
+      </div>
+      <p id="status" class="notice" role="status" aria-live="polite">Загрузка клиентов…</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Таблица клиентов с горизонтальной прокруткой">
+        <table>
+          <caption class="visually-hidden">Текущее состояние клиентов организации</caption>
+          <thead>
+            <tr>
+              <th scope="col">Статус</th>
+              <th scope="col">Домен</th>
+              <th scope="col">Компьютер</th>
+              <th scope="col">IP</th>
+              <th scope="col">Пользователь</th>
+              <th scope="col">Последний ввод</th>
+              <th scope="col">Последняя связь</th>
+            </tr>
+          </thead>
+          <tbody id="clients-body">
+            <tr><td colspan="7" class="empty">Ожидание данных…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Время указано в часовом поясе браузера. Offline — нет heartbeat в течение 20 секунд. Последний ввод — активность клавиатуры или мыши.</p>
+    </section>
+    <noscript><p class="notice error">Для загрузки списка клиентов включите JavaScript.</p></noscript>
+  </main>
+</body>
+</html>

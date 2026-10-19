@@ -5,4 +5,4 @@ public record HeartbeatRequest(
     string DomainName,
     string MachineName,
     string UserName,
-    DateTimeOffset LastInputAt);
+    DateTimeOffset? LastInputAt);
