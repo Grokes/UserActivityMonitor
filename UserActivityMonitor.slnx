@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/UserActivityMonitor.Client/UserActivityMonitor.Client.csproj" />
     <Project Path="src/UserActivityMonitor.Server/UserActivityMonitor.Server.csproj" />
+    <Project Path="src/UserActivityMonitor.Contracts/UserActivityMonitor.Contracts.csproj" />
   </Folder>
 </Solution>
