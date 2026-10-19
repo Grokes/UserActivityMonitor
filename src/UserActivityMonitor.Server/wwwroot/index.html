@@ -42,10 +42,11 @@
               <th scope="col">Пользователь</th>
               <th scope="col">Последний ввод</th>
               <th scope="col">Последняя связь</th>
+              <th scope="col">Действия</th>
             </tr>
           </thead>
           <tbody id="clients-body">
-            <tr><td colspan="7" class="empty">Ожидание данных…</td></tr>
+            <tr><td colspan="8" class="empty">Ожидание данных…</td></tr>
           </tbody>
         </table>
       </div>
@@ -53,5 +54,22 @@
     </section>
     <noscript><p class="notice error">Для загрузки списка клиентов включите JavaScript.</p></noscript>
   </main>
+  <dialog id="screenshot-dialog" aria-labelledby="screenshot-title" aria-describedby="screenshot-status">
+    <header class="dialog-header">
+      <div>
+        <h2 id="screenshot-title">Скриншот рабочего стола</h2>
+        <p id="screenshot-client"></p>
+      </div>
+      <button id="screenshot-close" type="button" class="secondary" autofocus>Закрыть</button>
+    </header>
+    <p id="screenshot-status" class="notice" role="status" aria-live="polite"></p>
+    <div class="screenshot-preview">
+      <img id="screenshot-image" alt="Скриншот основного монитора выбранного клиента" hidden>
+    </div>
+    <footer class="dialog-footer">
+      <span>Снимок основного монитора по запросу</span>
+      <button id="screenshot-retry" type="button" hidden>Запросить снова</button>
+    </footer>
+  </dialog>
 </body>
 </html>

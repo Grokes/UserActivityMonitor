@@ -20,12 +20,5 @@ public static class InputReader
 
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool GetLastInputInfo(ref LastInputInfo info);
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct LastInputInfo
-    {
-        public uint Size;
-        public uint Time;
-    }
+    static extern bool GetLastInputInfo(ref LastInputInfo info);
 }

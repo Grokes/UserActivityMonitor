@@ -8,7 +8,7 @@ public class ClientRegistry(TimeProvider timeProvider)
     private readonly Lock _sync = new();
     private readonly Dictionary<Guid, ClientInfo> _clients = new();
 
-    public void RecordHeartbeat(HeartbeatRequest heartbeat, string remoteIpAddress)
+    public void RecordHeartbeat(HeartbeatRequest heartbeat, string? remoteIpAddress)
     {
         lock (_sync)
         {

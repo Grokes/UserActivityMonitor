@@ -10,15 +10,16 @@ public static class ClientEndopoints
         app.MapGet("/clients", (ClientRegistry registry) => Results.Ok(registry.GetClients()));
     }
 
-    private static IResult RecordHeartbeat(
+    static IResult RecordHeartbeat(
         HeartbeatRequest heartbeat,
         HttpContext context,
-        ClientRegistry registry)
+        ClientRegistry registry,
+        ScreenshotRegistry screenshots)
     {
         var errors = new Dictionary<string, string[]>();
 
         if (heartbeat.ClientId == Guid.Empty)
-            errors[nameof(heartbeat.ClientId)] = ["AgentId must not be empty."];
+            errors[nameof(heartbeat.ClientId)] = ["ClientId must not be empty."];
 
         // An empty domain is allowed for computers without a domain.
         if (heartbeat.DomainName is null || heartbeat.DomainName.Length > 255)
@@ -38,6 +39,6 @@ public static class ClientEndopoints
             address = address.MapToIPv4();
 
         registry.RecordHeartbeat(heartbeat, address?.ToString());
-        return Results.NoContent();
+        return Results.Ok(new HeartbeatResponse(screenshots.GetPendingCommand(heartbeat.ClientId)));
     }
 }
